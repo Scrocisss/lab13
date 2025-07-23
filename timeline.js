@@ -28,48 +28,77 @@ function updateHashtagCounts() {
     });
 }
 
+function syncHashtagButtons(filter, isActive) {
+    // Синхронизируем состояние всех кнопок с данным фильтром
+    document.querySelectorAll(`.hashtag-btn[data-filter="${filter}"]`).forEach(btn => {
+        if (isActive) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+function applyFilters() {
+    const allBtn = document.querySelector('.hashtag-btn[data-filter="all"]');
+    const activeFilters = Array.from(document.querySelectorAll('.hashtag-btn.active'))
+        .map(btn => btn.dataset.filter)
+        .filter(filter => filter !== 'all');
+
+    // Если нет активных фильтров или активен "Все"
+    if (activeFilters.length === 0 || allBtn.classList.contains('active')) {
+        // Показываем все элементы
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.display = 'block';
+            item.classList.remove('highlighted');
+        });
+        // Активируем "Все" и деактивируем остальные
+        syncHashtagButtons('all', true);
+        document.querySelectorAll('.hashtag-btn:not([data-filter="all"])').forEach(btn => {
+            syncHashtagButtons(btn.dataset.filter, false);
+        });
+        return;
+    }
+
+    // Применяем фильтрацию
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        const itemTags = item.dataset.tags.split(' ');
+        const hasAnyTag = activeFilters.some(filter => itemTags.includes(filter));
+        
+        if (hasAnyTag) {
+            item.style.display = 'block';
+            item.classList.add('highlighted');
+        } else {
+            item.style.display = 'none';
+            item.classList.remove('highlighted');
+        }
+    });
+}
+
 function setupHashtagFilter() {
     document.querySelectorAll('.hashtag-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            if (this.dataset.filter === 'all') {
+            const filter = this.dataset.filter;
+            
+            // Если кликнули на "Все"
+            if (filter === 'all') {
+                // Синхронизируем состояние всех кнопок
+                syncHashtagButtons('all', true);
                 document.querySelectorAll('.hashtag-btn:not([data-filter="all"])').forEach(b => {
-                    b.classList.remove('active');
+                    syncHashtagButtons(b.dataset.filter, false);
                 });
-                this.classList.add('active');
-                document.querySelectorAll('.timeline-item').forEach(item => {
-                    item.classList.remove('faded');
-                    item.classList.remove('highlighted');
-                });
-                return;
-            }
-            this.classList.toggle('active');
-            const allBtn = document.querySelector('.hashtag-btn[data-filter="all"]');
-            if (allBtn.classList.contains('active')) {
-                allBtn.classList.remove('active');
-            }
-            const activeFilters = Array.from(document.querySelectorAll('.hashtag-btn.active'))
-                .map(btn => btn.dataset.filter)
-                .filter(filter => filter !== 'all');
-            if (activeFilters.length === 0) {
-                document.querySelectorAll('.timeline-item').forEach(item => {
-                    item.classList.remove('faded');
-                    item.classList.remove('highlighted');
-                });
-                allBtn.classList.add('active');
-                return;
-            }
-            document.querySelectorAll('.timeline-item').forEach(item => {
-                const itemTags = item.dataset.tags.split(' ');
-                const hasAnyTag = activeFilters.some(filter => itemTags.includes(filter));
-                
-                if (hasAnyTag) {
-                    item.classList.remove('faded');
-                    item.classList.add('highlighted');
-                } else {
-                    item.classList.add('faded');
-                    item.classList.remove('highlighted');
+            } else {
+                // Для других фильтров
+                const isActive = this.classList.contains('active');
+                syncHashtagButtons(filter, !isActive);
+                // Деактивируем "Все" если активируется другой фильтр
+                if (!isActive) {
+                    syncHashtagButtons('all', false);
                 }
-            });
+            }
+            
+            // Применяем фильтры
+            applyFilters();
         });
     });
 }
