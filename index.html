@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт - Главная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-user-circle me-2"></i>scrock_
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html"><i class="fas fa-file-alt me-1"></i> Резюме</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="route.html"><i class="fas fa-laptop-code me-1"></i> IT Путь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section text-center">
+        <div class="container">
+            <img src="photos/main_photo.png" alt="Моя фотография" class="profile-img rounded-circle mb-3">
+            <h1 class="display-4 fw-bold">Привет, я Филипп</h1>
+            <p class="status lead">"В цифровом мире следы невидимы, но я их нахожу."</p>
+            <main class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                            <div class="hacker-card p-4 mb-4">
+                                <h2 class="text-center mb-4"><i class="fas fa-terminal me-2"></i>Кибер-досье</h2>
+                                
+                                <div class="cyber-info">
+                                    <div class="info-item mb-3">
+                                        <h4><i class="fas fa-user-secret text-primary me-2"></i>Статус</h4>
+                                        <p>Студент-криминалист в цифровом мире. Специализация: компьютерная форензика и пентестинг.</p>
+                                    </div>
+                                    
+                                    <div class="info-item mb-3">
+                                        <h4><i class="fas fa-bug text-danger me-2"></i>Эксплуатация уязвимостей</h4>
+                                        <p>Ищу слабые места в системах, чтобы помочь их устранить. Люблю CTF и практические задания.</p>
+                                    </div>
+                                    
+                                    <div class="info-item mb-3">
+                                        <h4><i class="fas fa-search text-success me-2"></i>Цифровая форензика</h4>
+                                        <p>Анализирую артефакты, восстанавливаю данные, исследую киберпреступления.</p>
+                                    </div>
+                                    
+                                    <div class="info-item">
+                                        <h4><i class="fas fa-server text-info me-2"></i>Инфраструктура</h4>
+                                        <p>Настройка безопасной инфраструктуры, конфигурация защищённых сетей, работа с SIEM-системами.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-cyber dropdown-toggle" type="button" id="casesDropdown" 
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-folder-open me-1"></i>Мои кейсы
+                                </button>
+                                <ul class="dropdown-menu cyber-dropdown-menu" aria-labelledby="casesDropdown">
+                                    <li><h6 class="dropdown-header">Категории:</h6></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item cyber-item" href="https://github.com/Scrocisss/Cases/tree/main/FORENSIC" target="_blank">
+                                            <i class="fas fa-search text-success me-2"></i>Forensic
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item cyber-item" href="https://github.com/Scrocisss/Cases/tree/main/PENTEST MACHINES" target="_blank">
+                                            <i class="fas fa-server text-warning me-2"></i>Pentest Machines
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item cyber-item" href="https://github.com/Scrocisss/Cases/tree/main/WEB" target="_blank">
+                                            <i class="fas fa-code text-danger me-2"></i>WEB
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item cyber-item" href="https://github.com/Scrocisss/Cases/tree/main/PWN" target="_blank">
+                                            <i class="fas fa-bug text-primary me-2"></i>PWN
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item cyber-item" href="https://github.com/Scrocisss/Cases/tree/main/INFRASTRUCTURE" target="_blank">
+                                            <i class="fas fa-network-wired text-info me-2"></i>Infrastructure
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </section>
+
+        <footer class="text-center py-3">
+            <div class="container">
+                <p class="mb-2">&copy; <span id="current-year">2023</span> scrock_. Все права защищены.</p>
+                <div class="social-links">
+                    <a href="https://t.me/scrock_0" class="social-link mx-2" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="mailto:scrockwork@gmail.com" class="social-link mx-2" title="Gmail">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://vk.com/scrock_0" class="social-link mx-2" target="_blank" title="VK">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+
+        <script>
+                    document.ondragstart = noselect;
+                    document.onselectstart = noselect;
+                    document.oncontextmenu = noselect;
+                    function noselect() {return false;}
+        </script>
+
+
+        <script>
+            const userAgent = navigator.userAgent;
+            if (!userAgent || userAgent.includes('curl') || userAgent.includes('wget') || userAgent.includes('python')) {
+                document.body.innerHTML = '<h1>Доступ запрещён (только для браузеров)</h1>';
+            }
+        </script>
+</body>
+</html>
